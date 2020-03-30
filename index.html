@@ -11,11 +11,12 @@
   <script type="text/paperscript" canvas="myCanvas">
 
     var circles = [];
+    var radius = 500;
 
     function onKeyDown(event) {
       var maxPoint = new Point(view.size.width, view.size.height);
       var point = maxPoint * Point.random();
-      var circle = new Path.Circle(point, 10);
+      var circle = new Path.Circle(point, radius);
       circle.fillColor = "yellow";
       circles.push(circle);
     }
@@ -23,6 +24,7 @@
     function onFrame(event) {
       for (var i = 0; i < circles.length; ++i) {
         circles[i].fillColor.hue += 1;
+        circles[i].scale(.9);
       }
     }
   </script>
