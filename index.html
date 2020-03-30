@@ -9,10 +9,21 @@
   <link rel="stylesheet" href="assets/css/circles.css">
   <!-- Define inlined PaperScript associate it with myCanvas -->
   <script type="text/paperscript" canvas="myCanvas">
+
+    var circles = [];
+
     function onKeyDown(event) {
       var maxPoint = new Point(view.size.width, view.size.height);
       var point = maxPoint * Point.random();
-      new Path.Circle(point, 10).fillColor = "yellow";
+      var circle = new Path.Circle(point, 10);
+      circle.fillColor = "yellow";
+      circles.push(circle);
+    }
+
+    function onFrame(event) {
+      for (var i = 0; i < circles.length; ++i) {
+        circles[i].fillColor.hue += 1;
+      }
     }
   </script>
 </head>
